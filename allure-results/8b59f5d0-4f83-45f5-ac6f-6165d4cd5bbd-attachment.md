@@ -1,0 +1,174 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: POM\Test_class\DemoAddtocart.spec.js >> Add Product To Cart
+- Location: tests\POM\Test_class\DemoAddtocart.spec.js:6:5
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: locator('//td[text()=\'Samsung galaxy s6\']')
+Expected: visible
+Error: strict mode violation: locator('//td[text()=\'Samsung galaxy s6\']') resolved to 5 elements:
+    1) <td>Samsung galaxy s6</td> aka getByRole('cell', { name: 'Samsung galaxy s6' }).first()
+    2) <td>Samsung galaxy s6</td> aka getByRole('cell', { name: 'Samsung galaxy s6' }).nth(1)
+    3) <td>Samsung galaxy s6</td> aka getByRole('cell', { name: 'Samsung galaxy s6' }).nth(2)
+    4) <td>Samsung galaxy s6</td> aka getByRole('cell', { name: 'Samsung galaxy s6' }).nth(3)
+    5) <td>Samsung galaxy s6</td> aka getByRole('cell', { name: 'Samsung galaxy s6' }).nth(4)
+
+Call log:
+  - Expect "toBeVisible" with timeout 5000ms
+  - waiting for locator('//td[text()=\'Samsung galaxy s6\']')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - text:             
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "PRODUCT STORE" [ref=e4] [cursor=pointer]:
+        - /url: index.html
+        - img [ref=e5]
+        - text: PRODUCT STORE
+      - list [ref=e7]:
+        - listitem [ref=e8]:
+          - link "Home (current)" [ref=e9] [cursor=pointer]:
+            - /url: index.html
+            - text: Home
+            - generic [ref=e10]: (current)
+        - listitem [ref=e11]:
+          - link "Contact" [ref=e12] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e13]:
+          - link "About us" [ref=e14] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e15]:
+          - link "Cart" [ref=e16] [cursor=pointer]:
+            - /url: "#"
+        - listitem
+        - listitem [ref=e17]:
+          - link "Log out" [ref=e18] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e19]:
+          - link "Welcome jatingarg740@gmail.com" [ref=e20] [cursor=pointer]:
+            - /url: "#"
+        - listitem
+  - generic [ref=e22]:
+    - generic [ref=e23]:
+      - heading "Products" [level=2] [ref=e24]
+      - table [ref=e26]:
+        - rowgroup [ref=e27]:
+          - row "Pic Title Price x" [ref=e28]:
+            - columnheader "Pic" [ref=e29]
+            - columnheader "Title" [ref=e30]
+            - columnheader "Price" [ref=e31]
+            - columnheader "x" [ref=e32]
+        - rowgroup [ref=e33]:
+          - row "Samsung galaxy s6 360 Delete" [ref=e34]:
+            - cell [ref=e35]:
+              - img [ref=e36]
+            - cell "Samsung galaxy s6" [ref=e37]
+            - cell "360" [ref=e38]
+            - cell "Delete" [ref=e39]:
+              - link "Delete" [ref=e40] [cursor=pointer]:
+                - /url: "#"
+          - row "Samsung galaxy s6 360 Delete" [ref=e41]:
+            - cell [ref=e42]:
+              - img [ref=e43]
+            - cell "Samsung galaxy s6" [ref=e44]
+            - cell "360" [ref=e45]
+            - cell "Delete" [ref=e46]:
+              - link "Delete" [ref=e47] [cursor=pointer]:
+                - /url: "#"
+          - row "Samsung galaxy s6 360 Delete" [ref=e48]:
+            - cell [ref=e49]:
+              - img [ref=e50]
+            - cell "Samsung galaxy s6" [ref=e51]
+            - cell "360" [ref=e52]
+            - cell "Delete" [ref=e53]:
+              - link "Delete" [ref=e54] [cursor=pointer]:
+                - /url: "#"
+          - row "Samsung galaxy s6 360 Delete" [ref=e55]:
+            - cell [ref=e56]:
+              - img [ref=e57]
+            - cell "Samsung galaxy s6" [ref=e58]
+            - cell "360" [ref=e59]
+            - cell "Delete" [ref=e60]:
+              - link "Delete" [ref=e61] [cursor=pointer]:
+                - /url: "#"
+          - row "Samsung galaxy s6 360 Delete" [ref=e62]:
+            - cell [ref=e63]:
+              - img [ref=e64]
+            - cell "Samsung galaxy s6" [ref=e65]
+            - cell "360" [ref=e66]
+            - cell "Delete" [ref=e67]:
+              - link "Delete" [ref=e68] [cursor=pointer]:
+                - /url: "#"
+    - generic [ref=e69]:
+      - heading "Total" [level=2] [ref=e70]
+      - heading "1800" [level=3] [ref=e73]
+      - button "Place Order" [ref=e74]
+  - generic [ref=e76]:
+    - generic [ref=e79]:
+      - heading "About Us" [level=4] [ref=e80]
+      - paragraph [ref=e81]: We believe performance needs to be validated at every stage of the software development cycle and our open source compatible, massively scalable platform makes that a reality.
+    - generic [ref=e84]:
+      - heading "Get in Touch" [level=4] [ref=e85]
+      - paragraph [ref=e86]: "Address: 2390 El Camino Real"
+      - paragraph [ref=e87]: "Phone: +440 123456"
+      - paragraph [ref=e88]: "Email: demo@blazemeter.com"
+    - heading "PRODUCT STORE" [level=4] [ref=e92]:
+      - img [ref=e93]
+      - text: PRODUCT STORE
+  - contentinfo [ref=e94]:
+    - paragraph [ref=e95]: Copyright © Product Store
+```
+
+# Test source
+
+```ts
+  1  | import {test,expect} from '@playwright/test';
+  2  | export default class Addtocart{
+  3  |     constructor(page){
+  4  |         this.page = page;
+  5  | 
+  6  |         this.product = "//a[text()='Samsung galaxy s6']";
+  7  |         this.addtocartbutton = '//*[@onclick="addToCart(1)"]';
+  8  |         this.cart = '#cartur';
+  9  |         this.cartproduct = "//td[text()='Samsung galaxy s6']";
+  10 | 
+  11 |     }
+  12 | 
+  13 |     async selectProduct(){
+  14 |         await this.page.click(this.product);
+  15 |     }
+  16 |     
+  17 |     async clickAddToCart() {
+  18 | 
+  19 |         this.page.on('dialog', async dialog => {
+  20 |             console.log(dialog.message('Product added.'));
+  21 |             await dialog.accept();
+  22 |         });
+  23 |         await this.page.click(this.addtocartbutton);
+  24 |     }
+  25 | 
+  26 |     async opencart(){
+  27 |         await this.page.click(this.cart);
+  28 |     }
+  29 | 
+  30 |     async verifyProductAddedToCart() {
+> 31 |     await expect(this.page.locator(this.cartproduct)).toBeVisible();
+     |                                                       ^ Error: expect(locator).toBeVisible() failed
+  32 |     }
+  33 | }
+```

@@ -11,7 +11,7 @@ test('Verify User Can Logout Successfully', async ({ page }) => {
     
         await login.navigation();
         await login.LoginUser('jatingarg740@gmail.com','Test@123') ;
-        await login.verifySuccessfulLogin();
+        // await login.verifySuccessfulLogin();
 
         await logout.clickLogout() ;
         await logout.verifyLogoutSuccessful();

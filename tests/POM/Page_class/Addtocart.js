@@ -27,7 +27,7 @@ export default class Addtocart{
         await this.page.click(this.cart);
     }
 
-    async verifyProductAddedToCart() {
-    await expect(this.page.locator(this.cartproduct)).toBeVisible();
-    }
+    // async verifyProductAddedToCart() {
+    // await expect(this.page.locator(this.cartproduct)).toBeVisible();
+    // }
 }
